@@ -15,7 +15,7 @@ First, download the template:
 yarn create next-app account-kit-app -e https://github.com/avarobinson/account-kit-quickstart
 ```
 
-### Get you alchemy api key
+### Get your alchemy api key
 
 - Create a new embedded accounts configuration for an alchemy app in your [dashboard](https://dashboard.alchemy.com/accounts)
 - Replace the api key in the config.ts file
