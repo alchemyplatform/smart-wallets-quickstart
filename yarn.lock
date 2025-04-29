@@ -11,6 +11,15 @@
     eventemitter3 "^5.0.1"
     zod "^3.22.4"
 
+"@aa-sdk/core@^4.30.0":
+  version "4.30.0"
+  resolved "https://registry.yarnpkg.com/@aa-sdk/core/-/core-4.30.0.tgz#9403ec194bd535b9a95ff6be0617bdb40eff882b"
+  integrity sha512-eRDA5AIE8hMivDrw0gRBLKQeSnrCvfWZzhfwXkpNHEEc04aij6dkoO07uyCJIObPwglZHEuAG4RDE5nu4l/xSg==
+  dependencies:
+    abitype "^0.8.3"
+    eventemitter3 "^5.0.1"
+    zod "^3.22.4"
+
 "@account-kit/core@^4.23.1", "@account-kit/core@^4.9.0":
   version "4.23.1"
   resolved "https://registry.yarnpkg.com/@account-kit/core/-/core-4.23.1.tgz#0049d234ec11e816a5880e58d9d3c6b90aaaddb1"
@@ -39,10 +48,30 @@
   optionalDependencies:
     alchemy-sdk "^3.0.0"
 
+"@account-kit/infra@^4.30.0":
+  version "4.30.0"
+  resolved "https://registry.yarnpkg.com/@account-kit/infra/-/infra-4.30.0.tgz#3599747fa043d3df843c90f94cb9dfe8a52d21fc"
+  integrity sha512-NeIdu0Mlcb6arXAO+eZMEHOfbaoRnGzvOr5Xrho2DMctwk934yi6Iwl1OHJx0+f7XiEz+qWqim0DXp98AtN4QA==
+  dependencies:
+    "@aa-sdk/core" "^4.30.0"
+    "@account-kit/logging" "^4.30.0"
+    eventemitter3 "^5.0.1"
+    zod "^3.22.4"
+  optionalDependencies:
+    alchemy-sdk "^3.0.0"
+
 "@account-kit/logging@^4.23.1":
   version "4.23.1"
   resolved "https://registry.yarnpkg.com/@account-kit/logging/-/logging-4.23.1.tgz#38f754a4a59e21c40787193214c81d4e84e6978b"
   integrity sha512-t0NfY8Qcm0l183HTpdNU54QbQO0/A2h5HtXRXcuK5Xy4kIEvM/j5pOcTenjNKgu7TXrXZFwNG8k06vDScWNXsw==
+  dependencies:
+    "@segment/analytics-next" "^1.74.0"
+    uuid "^11.0.2"
+
+"@account-kit/logging@^4.30.0":
+  version "4.30.0"
+  resolved "https://registry.yarnpkg.com/@account-kit/logging/-/logging-4.30.0.tgz#0ed9e80cd8ae15ae2dbd9a73489d1e96d16ea940"
+  integrity sha512-rmfrzcyUHPTciKPLn6FpcYihfhFkGGckcLZGQMIRv7hvBKkaXXYwZczLC8CR4rlRFQU7yEDWDYBmrF6IDeNagA==
   dependencies:
     "@segment/analytics-next" "^1.74.0"
     uuid "^11.0.2"
@@ -92,12 +121,12 @@
     zustand "^5.0.0-rc.2"
 
 "@account-kit/smart-contracts@^4.23.1":
-  version "4.23.1"
-  resolved "https://registry.yarnpkg.com/@account-kit/smart-contracts/-/smart-contracts-4.23.1.tgz#7300292ab715d88967f1c91000d82920e1c1b29f"
-  integrity sha512-hEKZ/L2aZ4RFW7QSpXcvLQ1PdAEYjDgFY62IRzJ1Pi7iasONtzYRrhfi1k1qGZ+jvQR2lyF3JRPxB8qaLTe1sw==
+  version "4.30.0"
+  resolved "https://registry.yarnpkg.com/@account-kit/smart-contracts/-/smart-contracts-4.30.0.tgz#bf6f256171de03b2b40e95869657b9beea567e50"
+  integrity sha512-74BfphJX3jmRAi7FShm6nNnkJzmvXqof9IGwcV4n/bwc7Z6sPWyxniUfmHdRWzs0/evWMd3iPv4H3JV6HnUt7Q==
   dependencies:
-    "@aa-sdk/core" "^4.23.1"
-    "@account-kit/infra" "^4.23.1"
+    "@aa-sdk/core" "^4.30.0"
+    "@account-kit/infra" "^4.30.0"
 
 "@adraffy/ens-normalize@1.10.0":
   version "1.10.0"
