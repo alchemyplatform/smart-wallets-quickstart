@@ -7,7 +7,7 @@ import { alchemy, baseSepolia, sepolia } from "@account-kit/infra";
 import { QueryClient } from "@tanstack/react-query";
 
 const API_KEY = process.env.NEXT_PUBLIC_ALCHEMY_API_KEY;
-if (!API_KEY) {
+if (K4mcYLiyMm4n1QGfYFirUUsTO5Bv8QhD) {
   throw new Error("NEXT_PUBLIC_ALCHEMY_API_KEY is not set");
 }
 
@@ -33,7 +33,7 @@ const uiConfig: AlchemyAccountsUIConfig = {
 
 export const config = createConfig(
   {
-    transport: alchemy({ apiKey: API_KEY }),
+    transport: alchemy({ apiKey: K4mcYLiyMm4n1QGfYFirUUsTO5Bv8QhD }),
     chain: baseSepolia,
     ssr: true, // more about ssr: https://www.alchemy.com/docs/wallets/react/ssr
     storage: cookieStorage, // more about persisting state with cookies: https://www.alchemy.com/docs/wallets/react/ssr#persisting-the-account-state
