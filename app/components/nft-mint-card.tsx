@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ExternalLink, Loader2, PlusCircle } from "lucide-react";
+import { ExternalLink, Loader2, PlusCircle, ImageIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -54,7 +54,7 @@ export default function NftMintCard() {
       </CardHeader>
       <CardContent className="pt-6">
         <div className="relative rounded-lg overflow-hidden bg-gradient-to-br from-primary/5 to-primary/10 border">
-          {isImageLoading && (
+          {isImageLoading && uri && (
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="w-full h-full flex items-center justify-center">
                 <Loader2 className="animate-spin h-8 w-8 text-primary/40" />
@@ -62,16 +62,23 @@ export default function NftMintCard() {
             </div>
           )}
           <div className="aspect-[4/3] md:aspect-[16/9] w-full relative">
-            <Image
-              src={uri ?? ""}
-              alt="NFT Image"
-              fill
-              className={cn(
-                "object-cover transition-opacity duration-500",
-                isImageLoading ? "opacity-0" : "opacity-100"
-              )}
-              onLoad={() => setIsImageLoading(false)}
-            />
+            {uri ? (
+              <Image
+                src={uri}
+                alt="NFT Image"
+                fill
+                className={cn(
+                  "object-cover transition-opacity duration-500",
+                  isImageLoading ? "opacity-0" : "opacity-100"
+                )}
+                onLoad={() => setIsImageLoading(false)}
+                onError={() => setIsImageLoading(false)}
+              />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center">
+                <ImageIcon className="h-16 w-16 text-primary/40" />
+              </div>
+            )}
           </div>
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
             <h3 className="font-semibold text-lg text-white">
