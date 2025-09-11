@@ -3,7 +3,7 @@ import {
   cookieStorage,
   createConfig,
 } from "@account-kit/react";
-import { alchemy, arbitrumSepolia } from "@account-kit/infra";
+import { alchemy, arbitrum, arbitrumGoerli, arbitrumNova, arbitrumSepolia, base, baseGoerli, baseSepolia, fraxtal, fraxtalSepolia, goerli, mainnet, optimism, optimismGoerli, optimismSepolia, polygon, polygonAmoy, polygonMumbai, sepolia, shape, shapeSepolia, worldChain, worldChainSepolia, zora, zoraSepolia, beraChainBartio, opbnbMainnet, opbnbTestnet, soneiumMinato, soneiumMainnet, unichainMainnet, unichainSepolia, inkMainnet, inkSepolia, mekong, monadTestnet, openlootSepolia, gensynTestnet, riseTestnet, storyMainnet, storyAeneid, celoAlfajores, celoMainnet, teaSepolia, bobaSepolia, bobaMainnet } from "@account-kit/infra";
 import { QueryClient } from "@tanstack/react-query";
 
 const API_KEY = process.env.NEXT_PUBLIC_ALCHEMY_API_KEY;
@@ -14,6 +14,61 @@ if (!API_KEY) {
 const SPONSORSHIP_POLICY_ID = process.env.NEXT_PUBLIC_ALCHEMY_POLICY_ID;
 if (!SPONSORSHIP_POLICY_ID) {
   throw new Error("NEXT_PUBLIC_ALCHEMY_POLICY_ID is not set");
+}
+
+const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID || "abitrumSepolia";
+
+const allChains = {
+  arbitrum,
+  arbitrumGoerli,
+  arbitrumNova,
+  arbitrumSepolia,
+  base,
+  baseGoerli,
+  baseSepolia,
+  fraxtal,
+  fraxtalSepolia,
+  goerli,
+  mainnet,
+  optimism,
+  optimismGoerli,
+  optimismSepolia,
+  polygon,
+  polygonAmoy,
+  polygonMumbai,
+  sepolia,
+  shape,
+  shapeSepolia,
+  worldChain,
+  worldChainSepolia,
+  zora,
+  zoraSepolia,
+  beraChainBartio,
+  opbnbMainnet,
+  opbnbTestnet,
+  soneiumMinato,
+  soneiumMainnet,
+  unichainMainnet,
+  unichainSepolia,
+  inkMainnet,
+  inkSepolia,
+  mekong,
+  monadTestnet,
+  openlootSepolia,
+  gensynTestnet,
+  riseTestnet,
+  storyMainnet,
+  storyAeneid,
+  celoAlfajores,
+  celoMainnet,
+  teaSepolia,
+  bobaSepolia,
+  bobaMainnet
+}
+
+const chain = allChains[CHAIN_ID as keyof typeof allChains];
+if (!chain) {
+  throw new Error(`Unsupported chain ID: ${CHAIN_ID}. Supported chains: ${Object.keys(allChains).join(", ")}`);
 }
 
 const uiConfig: AlchemyAccountsUIConfig = {
@@ -34,8 +89,7 @@ const uiConfig: AlchemyAccountsUIConfig = {
 export const config = createConfig(
   {
     transport: alchemy({ apiKey: API_KEY }),
-    // Note: This quickstart is configured for Arbitrum Sepolia.
-    chain: arbitrumSepolia,
+    chain,
     ssr: true, // more about ssr: https://www.alchemy.com/docs/wallets/react/ssr
     storage: cookieStorage, // more about persisting state with cookies: https://www.alchemy.com/docs/wallets/react/ssr#persisting-the-account-state
     enablePopupOauth: true, // must be set to "true" if you plan on using popup rather than redirect in the social login flow
