@@ -1,10 +1,11 @@
 import { parseAbi } from "viem";
+import {chainNFTMintContract} from "@/lib/chains";
 
 export const NFT_CONTRACT_ADDRESS =
   "0xe8c25Ba6343C586648f3462dA000A86267724f24";
 
 export const getNftContractAddress = (chain: string): string | undefined => {
-    return chainNFTMintContract[chain];
+    return chainNFTMintContract[chain] || chainNFTMintContract['arbitrumSepolia'];
 }
 
 export const NFT_MINTABLE_ABI_PARSED = parseAbi([

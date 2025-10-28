@@ -1,4 +1,4 @@
-const chainNFTMintContract: Record<string, string> = {
+export const chainNFTMintContract: Record<string, string> = {
     arbitrumSepolia: "0x6D1BaA7951f26f600b4ABc3a9CF8F18aBf36fac1",
     baseSepolia: "0xe8c25Ba6343C586648f3462dA000A86267724f24",
     scrollSepolia:"0xe8c25Ba6343C586648f3462dA000A86267724f24",

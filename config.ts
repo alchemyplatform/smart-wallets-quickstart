@@ -16,7 +16,7 @@ if (!SPONSORSHIP_POLICY_ID) {
   throw new Error("NEXT_PUBLIC_ALCHEMY_POLICY_ID is not set");
 }
 
-const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID || "abitrumSepolia";
+const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID || "arbitrumSepolia";
 
 const allChains = {
   arbitrum,
