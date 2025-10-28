@@ -66,8 +66,8 @@ const allChains = {
   bobaMainnet
 }
 
-const chain = allChains[CHAIN_ID as keyof typeof allChains];
-if (!chain) {
+const envChain = allChains[CHAIN_ID as keyof typeof allChains];
+if (!envChain) {
   throw new Error(`Unsupported chain ID: ${CHAIN_ID}. Supported chains: ${Object.keys(allChains).join(", ")}`);
 }
 
@@ -89,7 +89,7 @@ const uiConfig: AlchemyAccountsUIConfig = {
 export const config = createConfig(
   {
     transport: alchemy({ apiKey: API_KEY }),
-    chain,
+    chain: envChain,
     ssr: true, // more about ssr: https://www.alchemy.com/docs/wallets/react/ssr
     storage: cookieStorage, // more about persisting state with cookies: https://www.alchemy.com/docs/wallets/react/ssr#persisting-the-account-state
     enablePopupOauth: true, // must be set to "true" if you plan on using popup rather than redirect in the social login flow
