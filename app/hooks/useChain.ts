@@ -1,5 +1,8 @@
-import {ARB_SEPOLIA} from "@/lib/constants";
+import { useSmartAccountClient } from "@account-kit/react";
+import { ARB_SEPOLIA } from "@/lib/constants";
 
 export const useChainId = () => {
-    return process.env.NEXT_PUBLIC_CHAIN_ID || ARB_SEPOLIA;
+    const { client } = useSmartAccountClient({});
+
+    return client?.chain?.id || ARB_SEPOLIA;
 }

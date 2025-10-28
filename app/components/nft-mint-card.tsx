@@ -21,8 +21,8 @@ import Link from "next/link";
 import { useReadNFTData } from "@/app/hooks/useReadNFTData";
 import { useMint } from "@/app/hooks/useMintNFT";
 import { useSmartAccountClient } from "@account-kit/react";
-import {getNftContractAddress} from "@/lib/constants";
-import {useChainId} from "@/app/hooks/useChain";
+import { getNftContractAddress } from "@/lib/constants";
+import { useChainId } from "@/app/hooks/useChain";
 
 export default function NftMintCard() {
   const [isImageLoading, setIsImageLoading] = useState(true);
