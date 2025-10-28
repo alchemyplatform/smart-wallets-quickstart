@@ -4,8 +4,8 @@ import {
   useSendUserOperation,
 } from "@account-kit/react";
 import { encodeFunctionData } from "viem";
-import {getNftContractAddress, NFT_MINTABLE_ABI_PARSED} from "@/lib/constants";
-import {useChainId} from "@/app/hooks/useChain";
+import { getNftContractAddress, NFT_MINTABLE_ABI_PARSED } from "@/lib/constants";
+import { useChainId } from "@/app/hooks/useChain";
 
 export interface UseMintNFTParams {
   onSuccess?: () => void;
