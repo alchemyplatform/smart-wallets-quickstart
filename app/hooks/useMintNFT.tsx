@@ -20,7 +20,7 @@ export interface UseMintReturn {
 export const useMint = ({ onSuccess }: UseMintNFTParams): UseMintReturn => {
   const [isMinting, setIsMinting] = useState(false);
   const [error, setError] = useState<string>();
-  const nftContractAddress = getNftContractAddress();
+  const chainData = getNftContractAddress();
 
   const { client } = useSmartAccountClient({});
 
@@ -53,9 +53,14 @@ export const useMint = ({ onSuccess }: UseMintNFTParams): UseMintReturn => {
       return;
     }
 
+    if (!chainData.nftContractAddress) {
+        setError("Contract address is not defined.");
+        return;
+    }
+
     sendUserOperation({
       uo: {
-        target: nftContractAddress,
+        target: chainData.nftContractAddress,
         data: encodeFunctionData({
           abi: NFT_MINTABLE_ABI_PARSED,
           functionName: "mintTo",
@@ -63,7 +68,7 @@ export const useMint = ({ onSuccess }: UseMintNFTParams): UseMintReturn => {
         }),
       },
     });
-  }, [client, sendUserOperation, nftContractAddress]);
+  }, [client, sendUserOperation, chainData]);
 
   const transactionUrl = useMemo(() => {
     if (!client?.chain?.blockExplorers || !sendUserOperationResult?.hash) {
