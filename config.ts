@@ -3,7 +3,8 @@ import {
   cookieStorage,
   createConfig,
 } from "@account-kit/react";
-import { alchemy, arbitrum, arbitrumGoerli, arbitrumNova, arbitrumSepolia, base, baseGoerli, baseSepolia, fraxtal, fraxtalSepolia, goerli, mainnet, optimism, optimismGoerli, optimismSepolia, polygon, polygonAmoy, polygonMumbai, sepolia, shape, shapeSepolia, worldChain, worldChainSepolia, zora, zoraSepolia, beraChainBartio, opbnbMainnet, opbnbTestnet, soneiumMinato, soneiumMainnet, unichainMainnet, unichainSepolia, inkMainnet, inkSepolia, mekong, monadTestnet, openlootSepolia, gensynTestnet, riseTestnet, storyMainnet, storyAeneid, celoAlfajores, celoMainnet, teaSepolia, bobaSepolia, bobaMainnet } from "@account-kit/infra";
+import * as infra from "@account-kit/infra";
+const { alchemy, ...chains } = infra;
 import { QueryClient } from "@tanstack/react-query";
 
 const API_KEY = process.env.NEXT_PUBLIC_ALCHEMY_API_KEY;
@@ -16,59 +17,13 @@ if (!SPONSORSHIP_POLICY_ID) {
   throw new Error("NEXT_PUBLIC_ALCHEMY_POLICY_ID is not set");
 }
 
-const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID || "arbitrumSepolia";
+const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID || 421614;
 
-const allChains = {
-  arbitrum,
-  arbitrumGoerli,
-  arbitrumNova,
-  arbitrumSepolia,
-  base,
-  baseGoerli,
-  baseSepolia,
-  fraxtal,
-  fraxtalSepolia,
-  goerli,
-  mainnet,
-  optimism,
-  optimismGoerli,
-  optimismSepolia,
-  polygon,
-  polygonAmoy,
-  polygonMumbai,
-  sepolia,
-  shape,
-  shapeSepolia,
-  worldChain,
-  worldChainSepolia,
-  zora,
-  zoraSepolia,
-  beraChainBartio,
-  opbnbMainnet,
-  opbnbTestnet,
-  soneiumMinato,
-  soneiumMainnet,
-  unichainMainnet,
-  unichainSepolia,
-  inkMainnet,
-  inkSepolia,
-  mekong,
-  monadTestnet,
-  openlootSepolia,
-  gensynTestnet,
-  riseTestnet,
-  storyMainnet,
-  storyAeneid,
-  celoAlfajores,
-  celoMainnet,
-  teaSepolia,
-  bobaSepolia,
-  bobaMainnet
-}
+const allChains = Object.values(chains).filter((chain) => typeof chain === 'object' && 'id' in chain);
+const envChain = allChains.find((chain) => `${chain.id}` === `${CHAIN_ID}`);
 
-const envChain = allChains[CHAIN_ID as keyof typeof allChains];
 if (!envChain) {
-  throw new Error(`Unsupported chain ID: ${CHAIN_ID}. Supported chains: ${Object.keys(allChains).join(", ")}`);
+  throw new Error(`Unsupported chain ID: ${CHAIN_ID}. Chains: ${allChains.map((chain) => `${chain.name}: ${chain.id}`).join(', ')}`);
 }
 
 const uiConfig: AlchemyAccountsUIConfig = {

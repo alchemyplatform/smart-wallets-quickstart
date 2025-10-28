@@ -1,81 +1,16 @@
-import {
-    arbitrum,
-    arbitrumGoerli,
-    arbitrumNova,
-    arbitrumSepolia,
-    base,
-    baseGoerli,
-    baseSepolia,
-    beraChainBartio, bobaMainnet, bobaSepolia, celoAlfajores, celoMainnet, fraxtal, fraxtalSepolia,
-    gensynTestnet, goerli, inkMainnet, inkSepolia, mainnet, mekong, monadTestnet,
-    opbnbMainnet, opbnbTestnet, openlootSepolia, optimism, optimismGoerli, optimismSepolia, polygon,
-    polygonAmoy, polygonMumbai, riseTestnet, sepolia, shape, shapeSepolia, soneiumMainnet,
-    soneiumMinato,
-    storyAeneid, storyMainnet,
-    teaSepolia, unichainMainnet, unichainSepolia, worldChain, worldChainSepolia, zora, zoraSepolia
-} from "@account-kit/infra";
-
-export const allChains = {
-    arbitrum,
-    arbitrumGoerli,
-    arbitrumNova,
-    arbitrumSepolia,
-    base,
-    baseGoerli,
-    baseSepolia,
-    fraxtal,
-    fraxtalSepolia,
-    goerli,
-    mainnet,
-    optimism,
-    optimismGoerli,
-    optimismSepolia,
-    polygon,
-    polygonAmoy,
-    polygonMumbai,
-    sepolia,
-    shape,
-    shapeSepolia,
-    worldChain,
-    worldChainSepolia,
-    zora,
-    zoraSepolia,
-    beraChainBartio,
-    opbnbMainnet,
-    opbnbTestnet,
-    soneiumMinato,
-    soneiumMainnet,
-    unichainMainnet,
-    unichainSepolia,
-    inkMainnet,
-    inkSepolia,
-    mekong,
-    monadTestnet,
-    openlootSepolia,
-    gensynTestnet,
-    riseTestnet,
-    storyMainnet,
-    storyAeneid,
-    celoAlfajores,
-    celoMainnet,
-    teaSepolia,
-    bobaSepolia,
-    bobaMainnet
-}
-
 export const chainNFTMintContract: Record<string, `0x${string}`> = {
-    arbitrumSepolia: "0x6D1BaA7951f26f600b4ABc3a9CF8F18aBf36fac1",
-    baseSepolia: "0x6d15c130d9B2548597C1d2D0c8CB2067Ce9C4525",
-    scrollSepolia:"0x6d15c130d9B2548597C1d2D0c8CB2067Ce9C4525",
-    polygonAmoy: "0x6d15c130d9B2548597C1d2D0c8CB2067Ce9C4525",
-    sepolia: "0xc59b508C90425C8e25e3F9dA30e52057908E2838",
-    shapeSepolia: "0x6d15c130d9B2548597C1d2D0c8CB2067Ce9C4525",
-    soneiumMinato: "0x6d15c130d9B2548597C1d2D0c8CB2067Ce9C4525",
-    unichainSepolia: "0x6d15c130d9B2548597C1d2D0c8CB2067Ce9C4525",
-    inkSepolia: "0x6d15c130d9B2548597C1d2D0c8CB2067Ce9C4525",
-    monadTestnet: "0x6d15c130d9B2548597C1d2D0c8CB2067Ce9C4525",
-    riseTestnet: "0x6d15c130d9B2548597C1d2D0c8CB2067Ce9C4525",
-    storyAeneid: "0x6d15c130d9B2548597C1d2D0c8CB2067Ce9C4525",
-    celoSepolia: "0x6d15c130d9B2548597C1d2D0c8CB2067Ce9C4525",
-    teaSepolia: "0x6d15c130d9B2548597C1d2D0c8CB2067Ce9C4525",
+    421614: "0x6D1BaA7951f26f600b4ABc3a9CF8F18aBf36fac1", // Arbitrum Sepolia
+    84532: "0x6d15c130d9B2548597C1d2D0c8CB2067Ce9C4525", // Base Sepolia
+    534351: "0x6d15c130d9B2548597C1d2D0c8CB2067Ce9C4525", // Scroll Sepolia
+    80002: "0x6d15c130d9B2548597C1d2D0c8CB2067Ce9C4525", // Polygon Amoy
+    11155111: "0xc59b508C90425C8e25e3F9dA30e52057908E2838", // Ethereum Sepolia
+    11011: "0x6d15c130d9B2548597C1d2D0c8CB2067Ce9C4525", // Shape Sepolia
+    1946: "0x6d15c130d9B2548597C1d2D0c8CB2067Ce9C4525", // Soneium Minato
+    1301: "0x6d15c130d9B2548597C1d2D0c8CB2067Ce9C4525", // Unichain Sepolia
+    763373: "0x6d15c130d9B2548597C1d2D0c8CB2067Ce9C4525", // Ink Sepolia
+    91002: "0x6d15c130d9B2548597C1d2D0c8CB2067Ce9C4525", // Monad Testnet
+    1380012617: "0x6d15c130d9B2548597C1d2D0c8CB2067Ce9C4525", // Rise Testnet
+    1313114: "0x6d15c130d9B2548597C1d2D0c8CB2067Ce9C4525", // Story Aeneid
+    11142220: "0x6d15c130d9B2548597C1d2D0c8CB2067Ce9C4525", // Celo Sepolia
+    10218: "0x6d15c130d9B2548597C1d2D0c8CB2067Ce9C4525", // Tea Sepolia
 }
