@@ -1,6 +1,6 @@
 import { parseAbi } from "viem";
-import {chainNFTMintContract} from "@/lib/chains";
-import {arbitrumSepolia} from "@account-kit/infra";
+import { chainNFTMintContract } from "@/lib/chains";
+import { arbitrumSepolia } from "@account-kit/infra";
 
 export const ARB_SEPOLIA = arbitrumSepolia.id;
 
