@@ -17,7 +17,7 @@ if (!SPONSORSHIP_POLICY_ID) {
   throw new Error("NEXT_PUBLIC_ALCHEMY_POLICY_ID is not set");
 }
 
-const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID || 421614;
+const CHAIN_ID = parseInt(process.env.NEXT_PUBLIC_CHAIN_ID ?? '') || 421614;
 
 const allChains = Object.values(chains).filter((chain) => typeof chain === 'object' && 'id' in chain);
 const envChain = allChains.find((chain) => `${chain.id}` === `${CHAIN_ID}`);
