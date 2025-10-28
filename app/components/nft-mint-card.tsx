@@ -26,7 +26,7 @@ import { getNftContractAddress } from "@/app/hooks/getNftContractAddress";
 export default function NftMintCard() {
   const [isImageLoading, setIsImageLoading] = useState(true);
   const [showSuccess, setShowSuccess] = useState(true);
-  const nftContractAddress = getNftContractAddress();
+  const {nftContractAddress} = getNftContractAddress();
 
   const { client } = useSmartAccountClient({});
 
