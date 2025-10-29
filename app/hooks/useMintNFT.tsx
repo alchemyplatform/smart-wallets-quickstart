@@ -5,7 +5,7 @@ import {
 } from "@account-kit/react";
 import { encodeFunctionData } from "viem";
 import { NFT_MINTABLE_ABI_PARSED } from "@/lib/constants";
-import { getNftContractAddress } from "@/app/hooks/getNftContractAddress";
+import { useNftContractAddress } from "@/app/hooks/useNftContractAddress";
 
 export interface UseMintNFTParams {
   onSuccess?: () => void;
@@ -20,7 +20,7 @@ export interface UseMintReturn {
 export const useMint = ({ onSuccess }: UseMintNFTParams): UseMintReturn => {
   const [isMinting, setIsMinting] = useState(false);
   const [error, setError] = useState<string>();
-  const chainData = getNftContractAddress();
+  const chainData = useNftContractAddress();
 
   const { client } = useSmartAccountClient({});
 

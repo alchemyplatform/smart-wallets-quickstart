@@ -21,12 +21,12 @@ import Link from "next/link";
 import { useReadNFTData } from "@/app/hooks/useReadNFTData";
 import { useMint } from "@/app/hooks/useMintNFT";
 import { useSmartAccountClient } from "@account-kit/react";
-import { getNftContractAddress } from "@/app/hooks/getNftContractAddress";
+import { useNftContractAddress } from "@/app/hooks/useNftContractAddress";
 
 export default function NftMintCard() {
   const [isImageLoading, setIsImageLoading] = useState(true);
   const [showSuccess, setShowSuccess] = useState(true);
-  const chainData = getNftContractAddress();
+  const chainData = useNftContractAddress();
 
   const { client } = useSmartAccountClient({});
 
