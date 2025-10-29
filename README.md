@@ -7,7 +7,7 @@ Use this template to get started with **embedded smart wallets** using [Alchemy 
 - Email, passkey & social login using pre‑built UI components
 - Flexible, secure, and cheap smart accounts
 - Gasless transactions powered by ERC-4337 Account Abstraction
-- One‑click NFT mint on Arbitrum Sepolia (no ETH required)
+- One‑click NFT mint (no ETH required)
 - Server‑side rendering ready – session persisted with cookies
 - TailwindCSS + shadcn/ui components, React Query, TypeScript
 
@@ -15,7 +15,7 @@ Use this template to get started with **embedded smart wallets** using [Alchemy 
 
 ## 📍 Network & Demo Contract
 
-This quickstart is configured to run on **Arbitrum Sepolia** testnet. A free demo NFT contract has been deployed specifically for this quickstart, allowing you to mint NFTs without any setup or deployment steps. The contract is pre-configured and ready to use out of the box.
+This quickstart is configured to run on **Arbitrum Sepolia** testnet, by default. A free demo NFT contract has been deployed specifically for this quickstart, allowing you to mint NFTs without any setup or deployment steps. The contract is pre-configured and ready to use out of the box.
 
 ## 🚀 Quick start
 
@@ -75,7 +75,7 @@ tailwind.config.ts
 
 ## 🏗️ How it works
 
-1. `config.ts` initializes Account Kit with your API key, Arbitrum Sepolia chain, and Gas Sponsorship policy.
+1. `config.ts` initializes Account Kit with your API key, chain, and Gas Sponsorship policy.
 2. `Providers` wraps the app with `AlchemyAccountProvider` & React Query.
 3. `LoginCard` opens the authentication modal (`useAuthModal`).
 4. After login, `useSmartAccountClient` exposes the smart wallet.

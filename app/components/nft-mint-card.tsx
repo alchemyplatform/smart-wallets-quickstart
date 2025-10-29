@@ -21,16 +21,17 @@ import Link from "next/link";
 import { useReadNFTData } from "@/app/hooks/useReadNFTData";
 import { useMint } from "@/app/hooks/useMintNFT";
 import { useSmartAccountClient } from "@account-kit/react";
-import { NFT_CONTRACT_ADDRESS } from "@/lib/constants";
+import { useNftContractAddress } from "@/app/hooks/useNftContractAddress";
 
 export default function NftMintCard() {
   const [isImageLoading, setIsImageLoading] = useState(true);
   const [showSuccess, setShowSuccess] = useState(true);
+  const nftContractAddress = useNftContractAddress();
 
   const { client } = useSmartAccountClient({});
 
   const { uri, count, isLoadingCount, refetchCount } = useReadNFTData({
-    contractAddress: NFT_CONTRACT_ADDRESS,
+    contractAddress: nftContractAddress,
     ownerAddress: client?.account?.address,
   });
 
@@ -123,7 +124,7 @@ export default function NftMintCard() {
               )}
             >
               <PlusCircle className="h-[18px] w-[18px]" />
-              Mint New NFT
+              Mint New NFT {!!client?.chain?.name && `on ${client.chain.name}`}
             </span>
             <span
               className={cn(
