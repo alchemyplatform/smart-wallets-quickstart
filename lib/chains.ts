@@ -14,7 +14,7 @@ import {
     teaSepolia
 } from "@account-kit/infra";
 
-interface ChainData {
+export interface ChainData {
     chain: Chain;
     nftContractAddress: Address;
 }

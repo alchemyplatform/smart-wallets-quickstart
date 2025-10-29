@@ -26,12 +26,12 @@ import { useNftContractAddress } from "@/app/hooks/useNftContractAddress";
 export default function NftMintCard() {
   const [isImageLoading, setIsImageLoading] = useState(true);
   const [showSuccess, setShowSuccess] = useState(true);
-  const chainData = useNftContractAddress();
+  const nftContractAddress = useNftContractAddress();
 
   const { client } = useSmartAccountClient({});
 
   const { uri, count, isLoadingCount, refetchCount } = useReadNFTData({
-    contractAddress: chainData.nftContractAddress,
+    contractAddress: nftContractAddress,
     ownerAddress: client?.account?.address,
   });
 
