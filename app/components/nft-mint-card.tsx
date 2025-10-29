@@ -124,7 +124,7 @@ export default function NftMintCard() {
               )}
             >
               <PlusCircle className="h-[18px] w-[18px]" />
-              Mint New NFT {client?.chain?.name ? `on ${client.chain.name}` : ''}
+              Mint New NFT {!!client?.chain?.name && `on ${client.chain.name}`}
             </span>
             <span
               className={cn(
