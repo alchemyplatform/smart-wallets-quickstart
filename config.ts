@@ -5,8 +5,7 @@ import {
 } from "@account-kit/react";
 import { QueryClient } from "@tanstack/react-query";
 import { chainNFTMintContractData } from "@/lib/chains";
-import * as infra from "@account-kit/infra";
-const { alchemy, ...chains } = infra;
+import { alchemy } from "@account-kit/infra";
 
 const API_KEY = process.env.NEXT_PUBLIC_ALCHEMY_API_KEY;
 if (!API_KEY) {
