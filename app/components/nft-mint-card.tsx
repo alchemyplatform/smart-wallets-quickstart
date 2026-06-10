@@ -1,5 +1,11 @@
-import { useState } from "react";
-import { ExternalLink, Loader2, PlusCircle } from "lucide-react";
+import { useState, useEffect } from "react";
+import {
+  ExternalLink,
+  Loader2,
+  PlusCircle,
+  ImageIcon,
+  CheckCircle,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -15,15 +21,17 @@ import Link from "next/link";
 import { useReadNFTData } from "@/app/hooks/useReadNFTData";
 import { useMint } from "@/app/hooks/useMintNFT";
 import { useSmartAccountClient } from "@account-kit/react";
-import { NFT_CONTRACT_ADDRESS } from "@/lib/constants";
+import { useNftContractAddress } from "@/app/hooks/useNftContractAddress";
 
 export default function NftMintCard() {
   const [isImageLoading, setIsImageLoading] = useState(true);
+  const [showSuccess, setShowSuccess] = useState(true);
+  const nftContractAddress = useNftContractAddress();
 
   const { client } = useSmartAccountClient({});
 
   const { uri, count, isLoadingCount, refetchCount } = useReadNFTData({
-    contractAddress: NFT_CONTRACT_ADDRESS,
+    contractAddress: nftContractAddress,
     ownerAddress: client?.account?.address,
   });
 
@@ -32,6 +40,17 @@ export default function NftMintCard() {
       refetchCount();
     },
   });
+
+  // Reset success animation when new transaction appears
+  useEffect(() => {
+    if (transactionUrl) {
+      setShowSuccess(true);
+      const timer = setTimeout(() => {
+        setShowSuccess(false);
+      }, 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [transactionUrl]);
 
   return (
     <Card className="overflow-hidden">
@@ -105,7 +124,7 @@ export default function NftMintCard() {
               )}
             >
               <PlusCircle className="h-[18px] w-[18px]" />
-              Mint New NFT
+              Mint New NFT {!!client?.chain?.name && `on ${client.chain.name}`}
             </span>
             <span
               className={cn(
@@ -124,16 +143,50 @@ export default function NftMintCard() {
             <Button
               variant="outline"
               size="lg"
-              className="gap-2 w-full sm:w-auto"
-              asChild
+              className={cn(
+                "gap-2 w-full sm:w-auto relative overflow-hidden transition-all duration-500",
+                "border-green-400 text-green-700 hover:bg-green-50",
+                "animate-in fade-in duration-700"
+              )}
             >
               <Link
                 href={transactionUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="flex items-center gap-2 w-full sm:w-auto"
               >
-                <span>View Transaction</span>
-                <ExternalLink className="h-4 w-4" />
+                {showSuccess ? (
+                  <>
+                    <div
+                      className="absolute inset-0 bg-gradient-to-r from-green-400 to-green-600 opacity-10"
+                      style={{
+                        animation: "sweep 1.5s ease-out",
+                      }}
+                    />
+                    <span className="relative z-10">Successful mint!</span>
+                    <CheckCircle className="h-4 w-4 relative z-10" />
+                    <style jsx>{`
+                      @keyframes sweep {
+                        0% {
+                          transform: translateX(-100%);
+                          opacity: 0;
+                        }
+                        50% {
+                          opacity: 0.2;
+                        }
+                        100% {
+                          transform: translateX(100%);
+                          opacity: 0;
+                        }
+                      }
+                    `}</style>
+                  </>
+                ) : (
+                  <>
+                    <span>View Transaction</span>
+                    <ExternalLink className="h-4 w-4" />
+                  </>
+                )}
               </Link>
             </Button>
           )}

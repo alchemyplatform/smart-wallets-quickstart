@@ -3,8 +3,9 @@ import {
   cookieStorage,
   createConfig,
 } from "@account-kit/react";
-import { alchemy, arbitrumSepolia } from "@account-kit/infra";
 import { QueryClient } from "@tanstack/react-query";
+import { chainNFTMintContractData } from "@/lib/chains";
+import { alchemy } from "@account-kit/infra";
 
 const API_KEY = process.env.NEXT_PUBLIC_ALCHEMY_API_KEY;
 if (!API_KEY) {
@@ -14,6 +15,12 @@ if (!API_KEY) {
 const SPONSORSHIP_POLICY_ID = process.env.NEXT_PUBLIC_ALCHEMY_POLICY_ID;
 if (!SPONSORSHIP_POLICY_ID) {
   throw new Error("NEXT_PUBLIC_ALCHEMY_POLICY_ID is not set");
+}
+
+const CHAIN_ID = parseInt(process.env.NEXT_PUBLIC_CHAIN_ID ?? '') || 421614;
+const chain = chainNFTMintContractData[CHAIN_ID]?.chain;
+if (!chain) {
+    throw new Error("Invalid chain ID")
 }
 
 const uiConfig: AlchemyAccountsUIConfig = {
@@ -34,8 +41,7 @@ const uiConfig: AlchemyAccountsUIConfig = {
 export const config = createConfig(
   {
     transport: alchemy({ apiKey: API_KEY }),
-    // Note: This quickstart is configured for Arbitrum Sepolia.
-    chain: arbitrumSepolia,
+    chain,
     ssr: true, // more about ssr: https://www.alchemy.com/docs/wallets/react/ssr
     storage: cookieStorage, // more about persisting state with cookies: https://www.alchemy.com/docs/wallets/react/ssr#persisting-the-account-state
     enablePopupOauth: true, // must be set to "true" if you plan on using popup rather than redirect in the social login flow
